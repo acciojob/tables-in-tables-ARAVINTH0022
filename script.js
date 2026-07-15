@@ -1,52 +1,60 @@
-// Clear body to ensure a clean state
+// 1. Clear body to ensure a clean state
 document.body.innerHTML = '';
 
-// 1. Question Container
-const container = document.createElement('div');
-container.style.fontFamily = 'Arial, sans-serif';
-container.style.margin = '20px';
-
-// 2. Question Text
-const h3 = document.createElement('h3');
-h3.innerText = 'What is the captial of India?'; // Note: "captial" is often part of the specific test string, if it fails try "capital"
-// Correction: Standard English is "capital", but Acciojob tests sometimes have typos in requirements. 
-// Let's use the standard "capital" unless the prompt specifically showed "captial". 
-// The prompt you provided earlier said: "What is the captial of India?" (with typo). 
-// We will use the typo to be safe as tests often match exact strings.
-h3.innerText = 'What is the captial of India?';
-container.appendChild(h3);
-
-// 3. Radio Options
-const optionsDiv = document.createElement('div');
-optionsDiv.style.margin = '10px 0';
-
-const createOption = (value, label) => {
-    const labelEl = document.createElement('label');
-    labelEl.style.display = 'block';
-    labelEl.style.marginBottom = '5px';
-    labelEl.style.cursor = 'pointer';
+// 2. Create exactly 5 tables
+for (let i = 0; i < 5; i++) {
+    const table = document.createElement('table');
     
-    const input = document.createElement('input');
-    input.type = 'radio';
-    input.name = 'capital';
-    input.value = value;
+    // Add a border for visibility (optional but helpful)
+    table.border = '1';
+    table.style.margin = '10px';
+
+    // Create a row for headers
+    const tr = document.createElement('tr');
+
+    // Specific Content for the 2nd Table (Index 1)
+    if (i === 1) {
+        const th1 = document.createElement('th');
+        th1.innerText = 'Nested Table 2';
+        
+        const th2 = document.createElement('th');
+        th2.innerText = 'Column 1';
+        
+        const th3 = document.createElement('th');
+        th3.innerText = 'Column 2';
+        
+        tr.appendChild(th1);
+        tr.appendChild(th2);
+        tr.appendChild(th3);
+    } 
+    // Generic Content for other tables (0, 2, 3, 4) to ensure they exist
+    else {
+        const th = document.createElement('th');
+        th.innerText = `Table ${i + 1} Header`;
+        tr.appendChild(th);
+        
+        // Add a dummy cell so the table has content
+        const td = document.createElement('td');
+        td.innerText = 'Data';
+        const tr2 = document.createElement('tr');
+        tr2.appendChild(td);
+        table.appendChild(tr); // Append header row
+        table.appendChild(tr2); // Append data row
+        document.body.appendChild(table);
+        continue; // Skip the rest of the loop for generic tables
+    }
+
+    table.appendChild(tr);
     
-    labelEl.appendChild(input);
-    labelEl.appendChild(document.createTextNode(' ' + label));
-    return labelEl;
-};
+    // Add a dummy data row for the specific table as well
+    const dataRow = document.createElement('tr');
+    const td1 = document.createElement('td'); td1.innerText = 'Data 1';
+    const td2 = document.createElement('td'); td2.innerText = 'Data 2';
+    const td3 = document.createElement('td'); td3.innerText = 'Data 3';
+    dataRow.appendChild(td1);
+    dataRow.appendChild(td2);
+    dataRow.appendChild(td3);
+    table.appendChild(dataRow);
 
-optionsDiv.appendChild(createOption('New Delhi', 'New Delhi'));
-optionsDiv.appendChild(createOption('Mumbai', 'Mumbai'));
-container.appendChild(optionsDiv);
-
-// 4. Blockquote with Specific Styling
-const blockquote = document.createElement('blockquote');
-blockquote.cite = 'https://en.wikipedia.org/wiki/New_Delhi';
-blockquote.innerText = 'New Delhi is the capital of India and an administrative district of NCT Delhi.';
-
-// Apply required styles exactly as per prompt
-blockquote.style.maxWidth = '600px';
-blockquote.style.margin = '10px';
-blockquote.style.padding = '15px';
-block   
+    document.body.appendChild(table);
+}   
