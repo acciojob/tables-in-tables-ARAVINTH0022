@@ -1,54 +1,45 @@
-// 1. Clear body
+// 1. Clear body to remove old tables
 document.body.innerHTML = '';
 
-// 2. Container
-const container = document.createElement('div');
-container.style.margin = '20px';
-container.style.fontFamily = 'Arial, sans-serif';
+// 2. Loop to create exactly 5 tables
+for (let i = 0; i < 5; i++) {
+    const table = document.createElement('table');
+    table.border = '1'; // Optional for visibility
+    table.style.margin = '10px';
 
-// 3. Question (Using "captial" to match potential test string requirements)
-const h3 = document.createElement('h3');
-h3.innerText = 'What is the captial of India?';
-container.appendChild(h3);
+    const tr = document.createElement('tr');
 
-// 4. Radio Options
-const optionsDiv = document.createElement('div');
-optionsDiv.style.margin = '10px 0';
+    if (i === 1) {
+        // Specific headers for the 2nd table (Index 1)
+        const th1 = document.createElement('th');
+        th1.innerText = 'Nested Table 2';
+        
+        const th2 = document.createElement('th');
+        th2.innerText = 'Column 1';
+        
+        const th3 = document.createElement('th');
+        th3.innerText = 'Column 2';
+        
+        tr.appendChild(th1);
+        tr.appendChild(th2);
+        tr.appendChild(th3);
+        
+        // Add a data row for completeness
+        const dataRow = document.createElement('tr');
+        dataRow.innerHTML = '<td>Data 1</td><td>Data 2</td><td>Data 3</td>';
+        table.appendChild(tr);
+        table.appendChild(dataRow);
+    } else {
+        // Generic headers for other tables
+        const th = document.createElement('th');
+        th.innerText = `Table ${i + 1}`;
+        tr.appendChild(th);
+        
+        const dataRow = document.createElement('tr');
+        dataRow.innerHTML = '<td>Generic Data</td>';
+        table.appendChild(tr);
+        table.appendChild(dataRow);
+    }
 
-const createOption = (value, label) => {
-    const labelEl = document.createElement('label');
-    labelEl.style.display = 'block';
-    labelEl.style.marginBottom = '5px';
-    labelEl.style.cursor = 'pointer';
-    
-    const input = document.createElement('input');
-    input.type = 'radio';
-    input.name = 'capital'; // Same name ensures only one can be selected
-    input.value = value;
-    
-    labelEl.appendChild(input);
-    labelEl.appendChild(document.createTextNode(' ' + label));
-    return labelEl;
-};
-
-optionsDiv.appendChild(createOption('New Delhi', 'New Delhi'));
-optionsDiv.appendChild(createOption('Mumbai', 'Mumbai'));
-container.appendChild(optionsDiv);
-
-// 5. Blockquote with Exact Styling
-const blockquote = document.createElement('blockquote');
-blockquote.cite = 'https://en.wikipedia.org/wiki/New_Delhi';
-blockquote.innerText = 'New Delhi is the capital of India and an administrative district of NCT Delhi.';
-
-// Apply styles exactly as required
-blockquote.style.maxWidth = '600px';
-blockquote.style.margin = '10px';
-blockquote.style.padding = '15px';
-blockquote.style.borderLeft = '8px solid green';
-blockquote.style.backgroundColor = '#f8fffe';
-blockquote.style.fontWeight = 'bold';
-
-container.appendChild(blockquote);
-
-// 6. Append to body
-document.body.appendChild(container);   
+    document.body.appendChild(table);
+}   
