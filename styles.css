@@ -1,2 +1,29 @@
+/* Style all tables */
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 10px;
+    width: 300px;
+}
 
+/* Style headers and cells */
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Specific style for the 2nd table headers if needed via nth-child */
+table:nth-of-type(2) th:nth-child(1) {
+    font-weight: bold;
+    background-color: #f0f0f0;
+}
+
+table:nth-of-type(2) th:nth-child(2) {
+    font-weight: bold;
+}
+
+table:nth-of-type(2) th:nth-child(3) {
+    font-weight: bold;
+}   
 /* Your CSS Code here. */
