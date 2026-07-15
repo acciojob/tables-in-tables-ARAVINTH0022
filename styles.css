@@ -1,29 +1,52 @@
-/* Style all tables */
+/* Styling for the overall tables to get the classic double-border look */
 table {
-    border: 1px solid black;
-    border-collapse: collapse;
-    margin: 10px;
-    width: 300px;
+  border-collapse: separate;
+  border-spacing: 5px;
+  border: 1px solid #777;
+  width: 100%;
 }
 
-/* Style headers and cells */
 th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
+  border: 1px solid #777;
+  padding: 10px;
+  text-align: center;
+  vertical-align: top;
 }
 
-/* Specific style for the 2nd table headers if needed via nth-child */
-table:nth-of-type(2) th:nth-child(1) {
-    font-weight: bold;
-    background-color: #f0f0f0;
+/* Specific styling for the main/outer table structure */
+.main-table {
+  max-width: 800px;
+  margin: 20px auto;
 }
 
-table:nth-of-type(2) th:nth-child(2) {
-    font-weight: bold;
+.main-table > tbody > tr > td {
+  padding: 15px;
+  width: 50%;
 }
 
-table:nth-of-type(2) th:nth-child(3) {
-    font-weight: bold;
-}   
+/* Nested tables layout */
+.nested-table {
+  width: 100%;
+}
+
+/* Bullet alignment for Nested Table 1 */
+ul {
+  text-align: left;
+  display: inline-block;
+  margin: 0;
+  padding-left: 20px;
+}
+
+/* Requirements requirement: Black background with white text containing "HTML" */
+.black-cell {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
+
+/* Link styling for Nested Table 3 */
+a {
+  color: blue;
+  text-decoration: underline;
+}
 /* Your CSS Code here. */
